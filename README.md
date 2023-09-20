@@ -11,7 +11,7 @@ This repository contains the PyTorch implementation of the research paper titled
 ## Model
 This network consists of T stages, where T is the number of frames. In each stage, one frame from a sequence will be sent into the network as input. ConvNet2 is a multi-layer CNN network for extracting features while an additional ConvNet1 will be used in the first stage for initialization. Results from the last stage will be concatenated with newly processed inputs plus a central Gaussian map, and they will be sent into the LSTM module. Outputs from LSTM will pass ConvNet3 and produce predictions for each frame. The architectures of those ConvNets are the same as the counterparts used in the [CPM model](https://arxiv.org/abs/1602.00134) but their weights are shared across stages. LSTM also enables weight sharing, which reduces the number of parameters in our network.
 
- <img src="https://github.com/HoseinAzad/LSTM-Pose-Machine-with-PyTorch/blob/master/ims/im1.png" width="500" height="400" class="centerImage">
+ <img src="https://github.com/HoseinAzad/LSTM-Pose-Machine-with-PyTorch/blob/master/ims/im1.png" width="500" height="1200" class="centerImage">
  
 
 ## Dataset
