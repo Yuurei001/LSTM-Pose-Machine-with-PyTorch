@@ -1,4 +1,4 @@
-# LSTM Pose Machines for Video Human Pose Estimation
+# LSTM Pose Machines for Video Human Pose Estimation - Implemented by PyTorch
 This is a pytorch implementation of [LSTM Pose Machines 2017](https://arxiv.org/abs/1712.06316) 
 
 
