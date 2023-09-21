@@ -1,0 +1,10 @@
+JOINTS_LIST = ['head', 'sho', 'sho', 'elb', 'elb', 'wri', 'wri', 'hip', 'hip', 'knee', 'knee', 'ank', 'ank']
+DATASET_PATH = "/content/Penn_Action"
+TEMPORAL = 5  # The length of frames sequence
+EPOCHS = 5
+LR = 1e-4
+TRAIN_BS = 8
+EVAL_BS = 2
+WEIGHT_DECAY = 0.01
+SCH_GAMMA = 0.4
+SCH_STEP = 1
