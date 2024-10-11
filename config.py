@@ -1,5 +1,5 @@
 JOINTS_LIST = ['head', 'sho', 'sho', 'elb', 'elb', 'wri', 'wri', 'hip', 'hip', 'knee', 'knee', 'ank', 'ank']
-DATASET_PATH = r"C:\Users\Yuurei\Downloads\Penn_Action"
+DATASET_PATH = r"/content/Penn_Action"
 TEMPORAL = 5  # The length of frames sequence
 EPOCHS = 5
 LR = 1e-4
