@@ -98,7 +98,7 @@ def evaluate(model, dataloader, criterion, temporal, device):
     return np.mean(losses), total_predictions
 
 
-def trainModel(dataset_path, temporal, lr, train_bs, eval_bs, epocks, weight_decay, sch_gamma, sch_step, title = '', ):
+def trainModel(dataset_path, temporal, lr, train_bs, eval_bs, epocks, weight_decay, sch_gamma, sch_step, title=''):
     # Loading dataset
     train_videos, train_labels, test_videos, test_labels = load_dataset(dataset_path)
 
@@ -108,7 +108,7 @@ def trainModel(dataset_path, temporal, lr, train_bs, eval_bs, epocks, weight_dec
 
     print('-' * 40)
     print('Number of train batches =', len(train_dataloader))
-    print('Number of validaion batches =', len(val_dataloader))
+    print('Number of validation batches =', len(val_dataloader))
 
     print('-' * 40)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -118,13 +118,13 @@ def trainModel(dataset_path, temporal, lr, train_bs, eval_bs, epocks, weight_dec
     model = get_model(temporal, device)
 
     # Determining the type of optimizer, scheduling and loss
-    optimizer = torch.optim.Adam(model.parameters(), lr = lr, eps = 1e-08, weight_decay = weight_decay)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size = sch_step, gamma = sch_gamma)
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr, eps=1e-08, weight_decay=weight_decay)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=sch_step, gamma=sch_gamma)
     criterion = loss_function
 
     best_accuracy = 0
     loss_list, metric_list = [], []
-    print('Start Training ....', end = '')
+    print('Start Training ....', end='')
     for epock in range(epocks):
         train_loss, train_predictions = train(model, train_dataloader, optimizer, criterion, epock, temporal, device)
         val_loss, val_predictions = evaluate(model, val_dataloader, criterion, temporal, device)
@@ -141,6 +141,10 @@ def trainModel(dataset_path, temporal, lr, train_bs, eval_bs, epocks, weight_dec
         print(f'\tValidation -> Loss = {val_loss:.4f} / PCK accuracy = {v_a:.4f}')
 
     plot(np.array(loss_list), np.array(metric_list), title)
+
+    # Lưu mô hình sau khi huấn luyện
+    torch.save(model.state_dict(), 'model_weights.pth')
+    print('Model weights saved to model_weights.pth')
 
     return model, loss_list, metric_list
 
