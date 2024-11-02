@@ -5,3 +5,4 @@ torch
 matplotlib
 torchvision
 Pillow
+yt-dlp
