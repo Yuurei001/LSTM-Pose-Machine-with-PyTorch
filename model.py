@@ -222,3 +222,22 @@ class LSTM_PM(nn.Module):
             heat_maps.append(heatmap)
 
         return heat_maps
+
+    def get_model(temporal, device):
+        """
+        Khởi tạo mô hình LSTM_PM và chuyển nó tới thiết bị được chỉ định
+
+        Args:
+            temporal (int): Số lượng khung hình cần xử lý trong chuỗi thời gian
+            device (torch.device): Thiết bị để chạy mô hình (CPU hoặc GPU)
+
+        Returns:
+            LSTM_PM: Mô hình đã được khởi tạo
+        """
+        # Khởi tạo mô hình LSTM_PM với tham số temporal
+        model = LSTM_PM(temporal=temporal)
+
+        # Chuyển mô hình sang thiết bị được chỉ định
+        model = model.to(device)
+
+        return model
