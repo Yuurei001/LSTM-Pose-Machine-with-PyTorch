@@ -240,4 +240,4 @@ def get_model(temporal, device):
 
     # Chuyển mô hình sang thiết bị được chỉ định
     model = model.to(device)
-    return None
+    return model
