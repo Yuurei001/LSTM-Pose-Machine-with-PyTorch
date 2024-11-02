@@ -222,3 +222,13 @@ class LSTM_PM(nn.Module):
             heat_maps.append(heatmap)
 
         return heat_maps
+        
+    def get_model(temporal, device):
+    # Khởi tạo mô hình LSTM_PM
+        model = LSTM_PM(temporal=temporal)
+    
+    # Chuyển mô hình sang thiết bị (CPU hoặc GPU)
+        model.to(device)
+    
+        return model
+
